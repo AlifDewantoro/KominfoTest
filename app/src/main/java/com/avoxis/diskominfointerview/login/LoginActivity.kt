@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import com.avoxis.diskominfointerview.R
 import com.avoxis.diskominfointerview.base.BaseActivity
+import com.avoxis.diskominfointerview.createupdate.CreateUpdateActivity
 import com.avoxis.diskominfointerview.databinding.ActivityLoginBinding
 import com.avoxis.diskominfointerview.login.presenter.LoginPresenter
 import com.avoxis.diskominfointerview.login.view.LoginView
@@ -44,20 +45,16 @@ class LoginActivity : BaseActivity(), LoginView {
 
     override fun onSuccessLogin(token: String) {
         sessionManager.setToken(token)
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, CreateUpdateActivity::class.java))
         finish()
-    }
-
-    override fun onShowLoading() {
-        loading.show()
-    }
-
-    override fun onHideLoading() {
-        loading.dismiss()
     }
 
     override fun onError(error: Throwable) {
         Log.e(TAG, error.message.toString())
-        Toast.makeText(this, error.localizedMessage, Toast.LENGTH_LONG).show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.disposePresenter()
     }
 }

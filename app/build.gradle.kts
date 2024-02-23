@@ -73,4 +73,6 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-common-java8:2.7.0")
 
     implementation ("com.loopj.android:android-async-http:1.4.9")
+
+    implementation ("com.jakewharton.timber:timber:4.7.1")
 }

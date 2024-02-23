@@ -11,7 +11,7 @@ open class BasePresenter {
     var retrofit = NetworkConfig()
     var disposable: Disposable? = null
 
-    fun disposePresenter(){
+    open fun disposePresenter(){
         disposable?.dispose()
     }
 }
